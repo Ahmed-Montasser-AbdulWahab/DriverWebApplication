@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DriverWebApplication.CustomValidators;
+
+using System.ComponentModel.DataAnnotations;
 
 namespace DriverWebApplication.Models
 {
@@ -21,7 +23,8 @@ namespace DriverWebApplication.Models
 
 
         [Required(ErrorMessage = "Please provide your {0}.")]
-        [Display(Name = "Date of birth")]
+        [CheckAgeValidator(25, ErrorMessage = "{0} field : younger than {1} years old.")]
+        [Display(Name = "Affrotto")]
         public DateTime? DateOfBirth { get; set; }
 
         [EmailAddress(ErrorMessage = "Enter your Email Correctly")]
@@ -30,6 +33,8 @@ namespace DriverWebApplication.Models
         [Display(Name = "Phone Number")]
         [Phone(ErrorMessage = "Enter your {0} correctly")]
         public string? PhoneNumber { get; set; }
+
+
 
     }
 }
