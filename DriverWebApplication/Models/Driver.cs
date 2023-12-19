@@ -34,7 +34,14 @@ namespace DriverWebApplication.Models
         [Phone(ErrorMessage = "Enter your {0} correctly")]
         public string? PhoneNumber { get; set; }
 
+        [Display(Name = "Modern Number Plates")]
+        [RegularExpression("^[a-z]{2,3}-[0-9]{3,4}$", ErrorMessage ="Check the format of your plates.")]
+        [NumberPlates("OldCarNumberPlates")]
+        public string? ModernCarNumberPlates { get; set; }
 
+        [Display(Name = "Old Number Plates")]
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Check the format of your plates.")]
+        public string? OldCarNumberPlates { get; set; }
 
     }
 }
